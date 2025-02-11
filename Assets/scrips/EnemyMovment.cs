@@ -11,13 +11,18 @@ public class EnemyMovment : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rigidBody = GetComponent<Rigidbody2D>();
+       // rigidBody = GetComponent<Rigidbody2D>();
     }
 
+  
+
+
+
+
     // Update is called once per frame
-    void FixedUpdate()
+   void FixedUpdate()
     {
-        //transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+        transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
 
         rigidBody.velocity = new Vector2(1 * moveSpeed, rigidBody.velocity.y);
     }
