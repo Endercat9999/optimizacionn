@@ -2,31 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DisparoJugador : MonoBehaviour
+public class EnemyShoot : MonoBehaviour
 {
-
-    public float moveSpeed;
-
-
+    public float EnemymoveSpeed;
     // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.up * moveSpeed * Time.deltaTime); 
+        transform.Translate(Vector2.down * EnemymoveSpeed * Time.deltaTime); 
     }
 
     private void  OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Enemy")
+        if(collision.gameObject.tag == "Player")
         {
             
             collision.gameObject.SetActive(false);
             gameObject.SetActive(false); 
         }
     }
+
+    
 }
