@@ -20,18 +20,19 @@ public class PlayerShoot : MonoBehaviour
     {
         if(Input.GetButtonDown("Fire1"))
         {
-            Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+            Shoot();
         }
     }
 
-    private void  OnTriggerEnter2D(Collider2D collision)
+   /* private void  OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Enemy")
         {
             Destroy(collision.gameObject); 
             Destroy(gameObject);
         }
-    }
+    }*/
+
     void Shoot()
     {
        GameObject bullet = PoolManager.Instance.GetPooledObjects(_ammoType,_bulletSpawn.position, _bulletSpawn.rotation);
@@ -42,7 +43,7 @@ public class PlayerShoot : MonoBehaviour
        }
        else
        {
-        Debug.Log("Pool demasiado pequeño");
+        Debug.Log("Pool demasiado pequeno");
        }
     }
 

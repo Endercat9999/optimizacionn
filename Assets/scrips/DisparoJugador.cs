@@ -19,4 +19,16 @@ public class DisparoJugador : MonoBehaviour
     {
         transform.Translate(Vector2.up * moveSpeed * Time.deltaTime); 
     }
+
+    private void  OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Enemy")
+        {
+            
+            collision.gameObject.SetActive(false);
+            gameObject.SetActive(false); 
+            
+            
+        }
+    }
 }
