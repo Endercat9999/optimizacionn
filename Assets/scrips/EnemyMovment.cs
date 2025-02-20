@@ -7,8 +7,8 @@ public class EnemySpawner : MonoBehaviour
 {
     public float moveSpeed; 
     public float downwardSpeed; 
-    [SerializeField] private Transform _EnemybulletSpawn;
-    [SerializeField] private int _ammoType = 1;
+    //[SerializeField] private Transform _EnemybulletSpawn;
+   // [SerializeField] private int _ammoType = 1;
     
     
 
@@ -20,6 +20,19 @@ public class EnemySpawner : MonoBehaviour
     {
 
         StartCoroutine(SpawnEnemies());
+    }
+
+    void Update()
+    {
+                // Logica de movimiento del monstruo
+        transform.Translate(Vector2.down * Time.deltaTime);
+
+        // Desactivar el monstruo si sale de la pantalla
+        if (transform.position.y < -6f)
+        {
+            gameObject.SetActive(false);
+        }
+
     }
 
     // Update is called once per frame
@@ -44,7 +57,7 @@ public class EnemySpawner : MonoBehaviour
         } 
     }
 
-    void Shoot()
+   /* void Shoot()
     {
         GameObject Enemybollet = PoolManager.Instance.GetPooledObjects(_ammoType, _EnemybulletSpawn.position, _EnemybulletSpawn.rotation);
 
@@ -56,14 +69,14 @@ public class EnemySpawner : MonoBehaviour
         {
             Debug.Log("Pool demasiado pequeno");
         }
-    }
+    }*/
 
     
     private IEnumerator SpawnEnemies()
     {
         while (true)
         {
-            Shoot();
+            Update();
             yield return new WaitForSeconds(5f); 
         }
     }
